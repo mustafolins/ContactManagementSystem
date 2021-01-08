@@ -61,5 +61,6 @@
 Create new tables from the right-click pop-up, new foreign keys by drag and drop of one column over the Pk column.
 Right-click any table header to start Relational Data Browse.]]></comment>
 		</callout>
+		<script name="CreateDatabase.sql" id="Editor_353fc5" language="SQL" confirmed="y" file="file:/D:/Documents/Projects/ContactManagementSystem/Database/CreateDatabase.sql" />
 	</layout>
 </project>
