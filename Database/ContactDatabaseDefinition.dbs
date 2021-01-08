@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="PostgreSQL" id="Project_10ad9c3" template="Default" database="PostgreSQL" >
+	<schema name="public" catalogname="CostumerDb" schemaname="public" >
+		<table name="contacts" >
+			<comment><![CDATA[A table containing customer entities.]]></comment>
+			<column name="id" type="integer" jt="4" mandatory="y" autoincrement="y" >
+				<comment><![CDATA[The id of the customer.]]></comment>
+			</column>
+			<column name="name" type="text" length="100" jt="12" mandatory="y" />
+			<column name="description" type="text" jt="12" mandatory="y" />
+			<column name="birthdate" type="date" jt="91" mandatory="y" />
+			<column name="group" type="integer" jt="4" mandatory="y" >
+				<comment><![CDATA[The group that the contact belons to.]]></comment>
+			</column>
+			<column name="created_timestamp" type="timestamp" jt="93" mandatory="y" >
+				<defo>CURRENT_TIMESTAMP</defo>
+				<comment><![CDATA[The time that the customer was added.]]></comment>
+			</column>
+			<column name="updated_timestamp" type="timestamp" jt="93" mandatory="y" >
+				<defo>CURRENT_TIMESTAMP</defo>
+				<comment><![CDATA[The time that the customer entity was updated.]]></comment>
+			</column>
+			<column name="favorite_flag" type="text" jt="12" >
+				<comment><![CDATA[The flag that is the favorite of the contact.]]></comment>
+			</column>
+			<index name="pk_customer_id" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<index name="idx_contacts_group" unique="NORMAL" >
+				<column name="group" />
+			</index>
+			<fk name="fk_contacts_groups" to_schema="public" to_table="groups" delete_action="cascade" update_action="cascade" >
+				<fk_column name="group" pk="id" />
+				<comment><![CDATA[The foreign key to the groups table.]]></comment>
+			</fk>
+		</table>
+		<table name="groups" >
+			<comment><![CDATA[A table of groups that contacts belong to.]]></comment>
+			<column name="id" type="integer" jt="4" mandatory="y" autoincrement="y" >
+				<comment><![CDATA[The id of the group.]]></comment>
+			</column>
+			<column name="title" type="text" jt="12" mandatory="y" >
+				<comment><![CDATA[The title of the group.]]></comment>
+			</column>
+			<column name="description" type="text" jt="12" >
+				<comment><![CDATA[The description of the group.]]></comment>
+			</column>
+			<index name="pk_groups_id" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+		</table>
+		<sequence name="customer_id_seq" start="1" />
+		<sequence name="groups_id_seq" start="1" />
+	</schema>
+	<connector name="PostgreSQL" database="PostgreSQL" driver_class="org.postgresql.Driver" driver_jar="postgresql-42.2.2.jar" driver_desc="Standard" host="localhost" port="5432" instance="CostumerDb" user="postgres" passwd="cGFzc3dvcmQ=" />
+	<layout name="Default Layout" id="Layout_21756c7" show_relation="columns" >
+		<entity schema="public" name="groups" color="C1D8EE" x="656" y="288" />
+		<entity schema="public" name="contacts" color="C1D8EE" x="352" y="272" />
+		<callout x="48" y="48" pointer="NO" >
+			<comment><![CDATA[You may create multiple layouts (diagrams) with the same or different tables.
+Create new tables from the right-click pop-up, new foreign keys by drag and drop of one column over the Pk column.
+Right-click any table header to start Relational Data Browse.]]></comment>
+		</callout>
+	</layout>
+</project>
