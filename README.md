@@ -9,7 +9,10 @@ If these build instructions don't work for you please let me know and I will mak
 Open up the `ContactManagementAPI.sln` inside of the `ContactManagementAPI` folder and simply run the solution.  I've left the default launch option as the swagger platform for testing purposes.  There is a connection string to the database inside of the `Startup.cs` file.  You'll need to change the connection string to point to the location of your database.
 
 ### Database
-The database is in `postgres` and designed with `dbSchema`.  Here is the entity relationship diagram.  [ERD](/readmepics/contactManagementSchema.png)
+The database is in `postgres` and designed with `dbSchema`.  Here is the entity relationship diagram:  
+
+![ERD](/readmepics/contactManagementSchema.png)
+
 I've also included a create script if you don't want to use `dbSchema`.  The build script is located in the `Database` folder called `CreateDatabase.sql`.  After you have your database up and going don't forget to make sure the connection string inside of the API is pointing to the correct location. 
 
 ### Frontend
